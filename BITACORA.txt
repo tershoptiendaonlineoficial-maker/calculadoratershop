@@ -1,0 +1,135 @@
+Desarrollador: Landirianos Site | CEO Fundador: Terry Romero | Contacto: landirianositeoficial@gmail.com
+════════════════════════════════════════════════════════════════════
+ BITÁCORA TÉCNICA — CALCULADORA PROFESIONAL PARA REVENDEDORES v4.0
+ Motor Multicambiario | Marca Blanca | Arquitectura SPA Pura
+════════════════════════════════════════════════════════════════════
+
+REGISTRO DE VERSIONES
+─────────────────────
+v1.0  │ Construcción inicial. Motor unicambiario USD. Matriz estática.
+v2.0  │ Incorporación de módulo de delivery y diseños adicionales.
+v3.0  │ Integración de segunda perspectiva cambiaria (Binance P2P).
+v4.0  │ [ACTUAL] Migración arquitectónica completa. Neutralización de
+      │ marca. Triple perspectiva cambiaria. Matriz editable en caliente.
+      │ Sistema de filas dinámicas. Módulo de promociones. Marca blanca.
+
+════════════════════════════════════════════════════════════════════
+ ENTRADA DE REGISTRO — 2026-06-11 | MIGRACIÓN v4.0
+════════════════════════════════════════════════════════════════════
+
+1. NEUTRALIZACIÓN DE MARCA (BRAND SCRUBBING)
+─────────────────────────────────────────────
+  ► Se eliminaron todas las referencias a marcas previas del codebase,
+    incluyendo textos, logotipos, imágenes y metadatos.
+  ► El sistema opera ahora bajo la identidad genérica:
+    "Calculadora Profesional para Revendedores"
+  ► Paleta visual definida como estándar de marca blanca:
+    · Fondo:    #111111 (Negro Puro)
+    · Tarjeta:  #1C1C1C (Gris Carbón)
+    · Borde:    #2D2D2D
+    · Acento:   #D35400 (Rojizo Atardecer)
+    · Texto:    #F0F0F0
+  ► Tipografía: Inter + JetBrains Mono (Google Fonts, libre de cargos).
+
+2. JUSTIFICACIÓN MATEMÁTICA — TRIPLE PERSPECTIVA CAMBIARIA
+────────────────────────────────────────────────────────────
+  El ecosistema venezolano opera bajo tres sistemas de valoración del
+  USD simultáneos. La omisión de cualquiera de ellos introduce sesgo
+  contable. La arquitectura v4.0 implementa tres conversiones paralelas:
+
+  ┌─────────────────┬────────────────────────────────────────────────┐
+  │ Canal           │ Justificación Matemática                       │
+  ├─────────────────┼────────────────────────────────────────────────┤
+  │ BCV — USD/Bs.   │ Base legal. Obligatorio para facturación formal │
+  │                 │ y liquidaciones contractuales. Referencia del   │
+  │                 │ Banco Central de Venezuela (Art. 5, Ley BCV).   │
+  ├─────────────────┼────────────────────────────────────────────────┤
+  │ BCV — EUR/Bs.   │ Relevancia operativa para proveedores con       │
+  │                 │ insumos importados de la zona euro. Permite al  │
+  │                 │ revendedor comparar si conviene liquidar en EUR  │
+  │                 │ o USD cuando el cliente paga en euros.           │
+  ├─────────────────┼────────────────────────────────────────────────┤
+  │ Binance P2P     │ Tasa de mercado real. Refleja el poder de       │
+  │                 │ compra efectivo del bolívar en operaciones       │
+  │                 │ crypto-to-fiat. Diferencial promedio ≈ 3-6%     │
+  │                 │ sobre la tasa BCV oficial, factor crítico para   │
+  │                 │ decisiones de cobro en efectivo vs. transferencia│
+  └─────────────────┴────────────────────────────────────────────────┘
+
+  Fórmula de conversión aplicada uniformemente:
+    Monto_Bs = Monto_USD × Tasa_Canal
+  
+  Formato de salida contable (ISO venezolano):
+    Separador de miles  → Punto    (.)
+    Separador decimal   → Coma     (,)
+    Ejemplo: 1.523.450,75 Bs.
+
+3. MATRIZ EDITABLE DE PRECIOS EN CALIENTE (HOT RELOAD)
+────────────────────────────────────────────────────────
+  Descripción: La matriz de 9 productos expone inputs numéricos nativos
+  directamente ligados al arreglo `products[]` en memoria mediante el
+  handler `updatePrice(idx, field, val)`.
+
+  Mecanismo de propagación:
+    Input → onchange → products[i][campo] = safeNum(val)
+                     → refreshRowOptions()
+                     → recalc()
+
+  Política de seguridad NaN:
+    Toda captura de valor numérico pasa por:
+      safeNum(v) = parseFloat(v) || 0
+    Esto garantiza que ningún campo vacío o malformado genera NaN
+    en cascada hacia los resultados del tablero.
+
+4. MOTOR DE FÓRMULAS v4.0 — AUDITORÍA MATEMÁTICA
+──────────────────────────────────────────────────
+  Variables base por fila i:
+    qty_i   = cantidad de prendas
+    prov_i  = costo proveedor unitario
+    sale_i  = precio de venta unitario (detal o mayor)
+
+  Agregados:
+    totalCostProv   = Σ(prov_i × qty_i)
+    totalVentaBruta = Σ(sale_i × qty_i)
+    totalQty        = Σ(qty_i)
+
+  Promo (afecta SOLO ingresos del revendedor, costo proveedor intacto):
+    · Modo %:    clienteBase = totalVentaBruta × (1 − disc/100)
+    · Modo fijo: clienteBase = precioFijoUnitario × totalQty
+
+  Diseños adicionales:
+    designExtra = (dCatalog×0.60 + dCustom×0.75) × totalQty
+
+  Delivery (pass-through, no altera margen):
+    delivery = {pickup:0, avenida:1.00, domicilio:inputUsuario}
+
+  Resultados finales:
+    ① Proveedor  = totalCostProv
+    ② Ganancia   = clienteBase − totalCostProv
+    ③ Cliente    = clienteBase
+    ④ + Delivery = clienteBase + delivery
+    ⑤ Gran Total = clienteBase + delivery + designExtra
+
+  Verificación de consistencia:
+    ③ ≤ ④ ≤ ⑤    SIEMPRE (delivery ≥ 0, designExtra ≥ 0) ✓
+    ② = ③ − ①   cuando no hay promo ✓
+    ① permanece invariante ante cualquier promo ✓
+
+5. POLÍTICA DE CÓDIGO LIMPIO — MARCA BLANCA
+─────────────────────────────────────────────
+  · Archivo único (SPA): index.html contiene HTML + CSS + JS en línea.
+    Zero dependencias externas de frameworks. Solo Google Fonts (CDN).
+  · Sin imágenes externas ni assets propietarios.
+  · CSS variables centralizadas en :root para facilitar re-branding.
+  · IDs descriptivos y únicos en todos los elementos interactivos.
+  · Código estructurado en secciones delimitadas con comentarios ASCII.
+
+6. COMPATIBILIDAD Y DESPLIEGUE
+────────────────────────────────
+  · Entorno: Navegador moderno (Chrome 90+, Firefox 88+, Edge 90+).
+  · Sin servidor requerido. Apertura directa: File > Open / doble clic.
+  · Dimensión del archivo: ~25KB (sin dependencias descargables).
+
+════════════════════════════════════════════════════════════════════
+ FIN DE REGISTRO v4.0
+════════════════════════════════════════════════════════════════════

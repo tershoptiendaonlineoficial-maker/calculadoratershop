@@ -1,0 +1,86 @@
+Precios/Tershop Online (tienda online)
+unicolor
+detal 5$ PROVEEDOR: 2.24$
+mayor 2.96$ PROVEEDOR: 2.24$
+
+sublimado catalogo
+detal 6$ PROVEEDOR: 3.50$
+mayor$ 4.2$ PROVEEDOR: 3.50$
+
+sublimado personalizado (3 modificaciones)
+detal 6.5$ PROVEEDOR: 3.50$
+mayor 4.9$ PROVEEDOR: 3.50$
+
+tallas 2 a XL
+----------------------------------
+2XXL/3XXL UNICOLOR
+detal 6$ PROVEEDOR: 4.5$
+mayor 5.5$ (unicolor) PROVEEDOR: 4.5$
+
+2XXL/3XXL sublimado catalogo
+detal 7$ PROVEEDOR: 5$
+mayor 5.9$ PROVEEDOR: 5$
+
+2XXL/3XXL sublimado personalizado (3 modificaciones)
+detal 8$ PROVEEDOR: 6$
+mayor 6.8$ PROVEEDOR: 6$
+-----------------------------------------------
+
+franela de microdurazno con dtf catalogo
+detal 7$ PROOVEEDOR: 5.94$ 
+mayor 6.34$  PROOVEEDOR: 5.94$
+
+franela de microdurazno con dtf personalizado
+detal 7$ PROOVEEDOR: 5.94$ 
+mayor 6.34$  PROOVEEDOR: 5.94$
+--------------------------------------------
+franela UNICOLOR/ALGODON
+detal 8$ PROOVEDOR: 6.62
+mayor 7.4$ PROOVEDOR: 6.62
+
+(SOLO A TASA EURO TODO)
+
+----------------------------------
+promo familia unicolor
+1 caballero (s-xl)
+1 dama (s-xl)
+1 niño (2-16)
+1 niña (2-16)
+10.5$
+
+promo familia personalizado 
+1 caballero (s-xl)
+1 dama (s-xl)
+1 niño (2-16)
+1 niña (2-16)
+18$
+
+promo escuela (personalizado)
+4 adultos (s-xl)
+35 niños (2-16)
+170$
+
+promo papa SUBLIMADO
+3 franelas (s-xl)
+12$
+
+PROMO MAMA SUBLIMADO
+2 FRANELAS (S-XL)
+8$
+
+promo parejas
+2 caballeros (s-xl)
+2 damas (s-xl)
+16$ 
+
+promo gym unicolor
+6 franelas (s-xl)
+16.8$
+promo gym sublimado
+6 franelas (s-xl)
+25$
+
+
+
+
+
