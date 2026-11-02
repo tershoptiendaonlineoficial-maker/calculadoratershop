@@ -71,15 +71,15 @@ La tabla editable es la **única fuente de verdad** del motor de cálculo. Para 
 
 | # | Producto | Proveedor | Detal | Mayor |
 |---|---|---|---|---|
-| 1 | Unicolor | $2.24 | $5.00 | $2.96 |
-| 2 | Sublimado Catálogo | $3.50 | $6.00 | $4.20 |
-| 3 | Sublimado Personalizado | $3.50 | $6.50 | $4.90 |
-| 4 | 2XXL/3XXL Unicolor | $4.50 | $6.00 | $5.50 |
-| 5 | 2XXL/3XXL Sublimado Catálogo | $5.00 | $7.00 | $5.90 |
-| 6 | 2XXL/3XXL Sublimado Personalizado | $6.00 | $8.00 | $6.80 |
-| 7 | Microdurazno con DTF Catálogo | $5.94 | $7.00 | $6.34 |
-| 8 | Microdurazno con DTF Personalizado | $5.94 | $7.00 | $6.34 |
-| 9 | Unicolor / Algodón | $6.62 | $8.00 | $7.40 |
+| 1 | Unicolor | $x | $5.00 | $2.96 |
+| 2 | Sublimado Catálogo | $x | $6.00 | $4.20 |
+| 3 | Sublimado Personalizado | $x| $6.50 | $4.90 |
+| 4 | 2XXL/3XXL Unicolor | $x | $6.00 | $5.50 |
+| 5 | 2XXL/3XXL Sublimado Catálogo | $x | $7.00 | $5.90 |
+| 6 | 2XXL/3XXL Sublimado Personalizado | $x | $8.00 | $6.80 |
+| 7 | Microdurazno con DTF Catálogo | $x | $7.00 | $6.34 |
+| 8 | Microdurazno con DTF Personalizado | $x | $7.00 | $6.34 |
+| 9 | Unicolor / Algodón | $x| $8.00 | $7.40 |
 
 ---
 
